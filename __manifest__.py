@@ -16,7 +16,7 @@
         'views/ip_visitor_tracking_views.xml',
         'security/ir.model.access.csv',
     ],
-    'icon': '/ip_visitor_tracking/static/description/icon.png',
+    'icon': '/ip_visitor_tracking/static/description/icon58.png',
     'installable': True,
     'application': False,
 }
