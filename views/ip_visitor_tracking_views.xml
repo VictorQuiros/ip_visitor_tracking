@@ -22,7 +22,13 @@
         <field name="model">ip.visitor.tracking</field>
         <field name="arch" type="xml">
             <form string="Geolocalización de Visitantes">
+                <header>
+                    <button name="action_register_visitor" string="Registrar Geolocalización" type="object" class="oe_highlight"/>
+                </header>
                 <sheet>
+                    <group>
+                        <field name="api_key" placeholder="Introduzca su clave API de ipgeolocation.io"/>
+                    </group>
                     <group>
                         <field name="ip_address"/>
                         <field name="country"/>
@@ -37,6 +43,23 @@
             </form>
         </field>
     </record>
+    
+    <!-- Formulario de nuevo registro -->
+    <record id="view_ip_visitor_tracking_form_new" model="ir.ui.view">
+        <field name="name">ip.visitor.tracking.form.new</field>
+        <field name="model">ip.visitor.tracking</field>
+        <field name="arch" type="xml">
+            <form string="Registrar Nuevo Visitante">
+                <group>
+                    <field name="api_key" placeholder="Introduzca su clave API de ipgeolocation.io" required="1"/>
+                </group>
+                <footer>
+                    <button name="action_register_visitor" string="Registrar" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 
     <record id="action_ip_visitor_tracking" model="ir.actions.act_window">
         <field name="name">Geolocalización de Visitantes</field>
@@ -48,7 +71,18 @@
             </p>
         </field>
     </record>
+    
+    <!-- Acción para nuevo registro -->
+    <record id="action_ip_visitor_tracking_new" model="ir.actions.act_window">
+        <field name="name">Registrar Nuevo Visitante</field>
+        <field name="res_model">ip.visitor.tracking</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_ip_visitor_tracking_form_new"/>
+        <field name="target">new</field>
+        <field name="context">{'default_api_key': ''}</field>
+    </record>
 
     <menuitem id="menu_ip_visitor_tracking_root" name="Geolocalización"/>
     <menuitem id="menu_ip_visitor_tracking" name="Visitantes" parent="menu_ip_visitor_tracking_root" action="action_ip_visitor_tracking"/>
+    <menuitem id="menu_ip_visitor_tracking_new" name="Registrar Nuevo" parent="menu_ip_visitor_tracking" action="action_ip_visitor_tracking_new"/>
 </odoo>
