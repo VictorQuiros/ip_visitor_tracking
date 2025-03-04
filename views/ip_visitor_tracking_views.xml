@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_ip_visitor_tracking_tree" model="ir.ui.view">
+        <field name="name">ip.visitor.tracking.tree</field>
+        <field name="model">ip.visitor.tracking</field>
+        <field name="arch" type="xml">
+            <tree string="Geolocalización de Visitantes">
+                <field name="ip_address"/>
+                <field name="country"/>
+                <field name="city"/>
+                <field name="longitude"/>
+                <field name="latitude"/>
+                <field name="isp"/>
+                <field name="organization"/>
+                <field name="visit_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ip_visitor_tracking_form" model="ir.ui.view">
+        <field name="name">ip.visitor.tracking.form</field>
+        <field name="model">ip.visitor.tracking</field>
+        <field name="arch" type="xml">
+            <form string="Geolocalización de Visitantes">
+                <sheet>
+                    <group>
+                        <field name="ip_address"/>
+                        <field name="country"/>
+                        <field name="city"/>
+                        <field name="longitude"/>
+                        <field name="latitude"/>
+                        <field name="isp"/>
+                        <field name="organization"/>
+                        <field name="visit_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ip_visitor_tracking" model="ir.actions.act_window">
+        <field name="name">Geolocalización de Visitantes</field>
+        <field name="res_model">ip.visitor.tracking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Crea un nuevo registro de geolocalización de visitante.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_ip_visitor_tracking_root" name="Geolocalización"/>
+    <menuitem id="menu_ip_visitor_tracking" name="Visitantes" parent="menu_ip_visitor_tracking_root" action="action_ip_visitor_tracking"/>
+</odoo>
